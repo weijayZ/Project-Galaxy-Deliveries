@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="sideways">
+		<div class="vNav">
+			<ul>
+					{% for item in menu %}
+					<li><a href='{{item[1]}}'>{{item[0]}}</a></li>
+					{% endfor %}
+			</ul>
+
+		</div>
+
+		<div class="content" id="wow">
+			<h2>{{type}}</h2>
+			<div class="food">
+			{% for p in product %}
+				<div class="fooditem">
+					<a href="item.php?id={{p[3]}}"><img src="{{p[2]}}" class="fPic" alt="Food Image"></a>
+					<strong>{{p[0]}} <br>Price: {{p[1]}} Credits</strong>
+				</div>
+				{% endfor %}
+			</div>
+			</table>
+		</div>
+	</div>
+</div>

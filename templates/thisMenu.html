@@ -1,0 +1,23 @@
+<div class="someButton" onclick="showStuff()">
+        <h2>Menu</h2>
+    </div>
+
+<nav id="nav2">
+    <ul>
+        {% for item in menu %}
+        <li><a href='{{item[1]}}'>{{item[0]}}</a></li>
+        {% endfor %}
+    </ul>
+    
+</nav>
+
+<nav id="nav1">
+        <ul>
+            {% for item in menu %}
+            <li><a href='{{item[1]}}'>{{item[0]}}</a></li>
+            {% endfor %}
+        </ul>
+        {% autoescape false %}
+        <h2>{{cart}}</h2>
+        {% endautoescape %}
+</nav>

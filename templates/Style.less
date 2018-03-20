@@ -1,0 +1,542 @@
+@color_1: {{bg}};
+@color_2: white;
+@color_3: gold;
+@color_4: silver;
+@color_5: green;
+@font_family_1: arial;
+@font_family_2: {{hFont}};
+@font_family_3: {{themeFont}};
+@font_family_4: Lobster;
+@background_color_1: black;
+@background_color_2: white;
+@background_color_3: {{bg}};
+@background_color_4: #F1E6E3;
+@my_selector_1: mainContainer;
+@my_selector_2: screenShots;
+@positionSet: {position: relative;};
+@widthSet: { width: 100%;};
+@import "https://fonts.googleapis.com/css?family=Lobster";
+@import url('https://fonts.googleapis.com/css?family=Audiowide');
+@import url('https://fonts.googleapis.com/css?family=Anton');
+html{
+	overflow-x: hidden;
+}
+@font-face {
+	font-family: 'DS9';
+	src: url('dinTrek.ttf');
+}
+
+.thisMixin_1(@dir) {
+	display: flex;
+	flex-direction: @dir;
+
+}
+
+.thisMixin_2(@letterColors) {
+	text-decoration: none;
+	color: @letterColors;
+	&:hover {
+		color: @color_3;
+		background-color: @color_4;
+	}
+}
+
+.thisMixin_3(@first,@second,@third){
+	margin-top: @first;
+	max-height: @second;
+	margin-bottom: @third;
+}
+
+.fontMod(@f){
+	font-family: @f;
+}
+
+.colorMod(@mod) when (@mod = "special"){
+	background-color: @background_color_3;
+	color: @color_2;
+}
+
+.colorMod(@mod) when (@mod = "regular"){
+	background-color: @background_color_4;
+}
+
+.colorMod2 (@testedColor) when (lightness(@testedColor) < 50%) {
+  background-color: @background_color_3;
+}
+.colorMod2 (@testedColor) when (lightness(@testedColor) >= 50%) {
+  background-color: @background_color_1;
+}
+
+.bgImage {
+	background-image: url("image/bg.jpg");
+}
+
+.bordered{
+	border: 2px solid gold;
+}
+.borderedtb{
+	border-top: 2px solid gold;
+	border-bottom: 2px solid gold;
+}
+
+.borderedlr{
+	border-left: 2px solid gold;
+	border-right: 2px solid gold;
+}
+
+body {
+	@positionSet();
+	text-align: center;
+	padding: 0;
+	font-family: @font_family_1;
+	font-size: 20px;
+	margin: 0;
+	.bgImage;
+}
+
+header {
+	text-align: center;
+	margin:auto;
+	display: inline;
+	.bgImage;
+	h1 {
+		margin: 0;
+		font-size: {{fSize}};
+		color: black;
+		text-shadow: 0 0 20px gold;
+		font-family: @font_family_2;
+	}
+}
+nav {
+	.fontMod(@font_family_3);
+	@positionSet();
+	display: block;
+	margin: auto;
+	@widthSet();
+	z-index: +3;
+	.colorMod2(black);
+	li {
+		.borderedtb;
+		height: 40px;
+		@widthSet();
+		&:hover {
+			background-color: @color_4;
+		}
+	}
+
+	ul {
+		@widthSet();
+		margin: 0;
+		padding: 0;
+		.thisMixin_1(rtl);
+		justify-content: space-around;
+		text-align: center;
+		list-style-type: none;
+
+	}
+	a {
+		display: block;
+		padding-top: 8px;
+		font-size: 30px;
+		.thisMixin_2(@color_3);
+	}
+}
+
+.topMenu
+{
+	position: fixed;
+	top:0;
+
+}
+
+a {
+	.thisMixin_2(@color_1);
+}
+
+.@{my_selector_1}{
+	.thisMixin_1(rtl);
+}
+
+main {
+	background-color: @background_color_2;
+	display: block;
+	overflow: auto;
+	flex-basis: 70%;
+}
+
+table, th, td {
+	margin: auto;
+	text-align: left;
+
+}
+
+td{
+	background-color: @color_2;
+}
+
+section {
+	.colorMod("regular");
+	flex-basis: 30%;
+	position: relative;
+}
+
+footer{
+	.fontMod(@font_family_3);
+	.borderedtb;
+	position: absolute;
+	right: 0;
+	left: 0;
+	.colorMod("special");
+	text-align: center;
+	@widthSet();
+	small {
+		color: @color_3;
+		font-size: 20px;
+	}
+}
+
+h2{
+	font-family: @font_family_3;
+	background-color: black;
+	color: @color_3;
+	margin-top: 0;
+	font-size: 3rem;
+	margin-bottom: 0;
+	padding-top: 5px;
+	//.borderedtb;
+}
+
+h3 {
+	margin: 0;
+	font-family: @font_family_4;
+	font-size: 25px;
+	background-color: white;
+}
+//index Content
+h1{
+	margin:0;
+	font-size: 4rem;
+	color: @color_3;
+	font-family: @font_family_3;
+	margin-top: 15px;
+}
+.container{
+	min-height: 100vh;
+}
+.content{
+	background-color: white;
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+	overflow: hidden;
+
+	.bordered;
+	.thisMixin_1(column);
+
+	h2{
+		border-bottom: 1px solid @color_3;
+	}
+
+		ul{
+			padding: 0;
+			.thisMixin_1(rtl);
+			li{
+				flex-grow: 1;
+    		flex-basis: 0;
+				display: inline-block;
+				background-color: white;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+			li:nth-child(2){
+				.borderedlr;
+			}
+		}
+
+		p{
+			font-family: sans-serif;
+			margin:0;
+			padding: 10px;
+			font-size: 18px;
+		}
+
+		img{
+			width: 100%;
+			.borderedtb;
+			margin-bottom: 0;
+		}
+
+		.portrait{
+			width: 50%;
+			margin: auto;
+			margin-top: 20px;
+		}
+		iframe {
+			width: 100%;
+			margin: auto;
+			margin-bottom: 0;
+		}
+		.logB {
+		border: none;
+		width: 80%;
+		color: @color_3;
+		background-color: @color_1;
+		display: inline-block;
+		height: 30px;
+		padding: 0;
+		margin-bottom: 10px;
+		text-align: center;
+		text-decoration: none;
+		.fontMod(@font_family_3);
+		font-size: 23px;
+		box-shadow: 2px 2px 2px #888888;
+		&:hover{
+			background-color: @color_4;
+			}
+		}
+
+		.logA {
+			border: none;
+			width: 100%;
+			color: @color_3;
+			background-color: @color_1;
+			display: inline-block;
+			height: 45px;
+			padding: 0;
+			text-align: center;
+			text-decoration: none;
+			.fontMod(@font_family_3);
+			font-size: 23px;
+			box-shadow: 2px 2px 2px #888888;
+			.borderedtb;
+			&:hover{
+				background-color: @color_4;
+				}
+			}
+
+		#quantity{
+			text-align: center;
+		}
+
+		.cart{
+			width: 100%;
+			border: 1px solid black;
+			background-color: black;
+			margin: 0;
+			th, td{
+				border: 1px solid black;
+				background-color: white;
+			}
+
+			tr td:nth-child(6){
+				display: none;
+			}
+
+			.logB{
+				width: 100%;
+			}
+		}
+		#prof{
+			margin-bottom: 20px;
+		}
+
+		.fInfo{
+			margin-bottom: 50px;
+		}
+		#wow{
+			background-color: black;
+		}
+	}
+
+.sideways{
+	.thisMixin_1(row);
+	.vNav{
+		flex-basis: 20%;
+		margin: auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		.fontMod(@font_family_3);
+		@positionSet();
+		@widthSet();
+		//background-color: @color_1;
+		li {
+				padding-top: 10px;
+				.bordered;
+			&:hover {
+				background-color: @color_4;
+				box-shadow: 2px 5px 5px #888888;
+				flex-basis: auto;
+			}
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			justify-content: space-around;
+			text-align: center;
+			list-style-type: none;
+			background-color: @color_1;
+
+		}
+		a {
+			display: block;
+			font-size: 30px;
+			.thisMixin_2(@color_3);
+		}
+	}
+	.foodpic2{
+		max-width: 600px;
+		margin: auto;
+	}
+}
+
+.food{
+	.thisMixin_1(row);
+	flex-wrap: wrap;
+	padding-top: 2%;
+	background-image: url("image/bg2.jpg");
+	.fooditem{
+		flex-basis: 25%;
+		margin: auto;
+		margin-bottom: 2%;
+		background-color: white;
+		.bordered;
+		h4{
+			margin: 10px;
+		}
+	}
+}
+
+#sprite{
+	position: absolute;
+	width: 220px;
+	right: 100%;
+}
+
+#sprite2{
+	position: absolute;
+	width: 220px;
+	right: 100%;
+}
+
+#nav2.hider{
+	display: none;
+}
+
+#nav1 {
+	h2{
+		border-bottom: 1px solid @color_3;
+		margin: 0;
+		padding: 0;
+	}
+
+}
+
+.portrait{
+	width: 50%;
+}
+
+#nav2{
+	ul{
+		flex-direction: column;
+	}
+	position: absolute;
+	z-index: 1;
+	margin: 0;
+	display:none;
+	width: 100%;
+}
+
+.someButton{
+	background-color: black; 
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: none;
+	h2{
+		.borderedtb;
+		&:hover{
+			background-color: @color_4;
+		}
+	}
+
+}
+
+#carter {
+	.bgImage;
+	border: none;
+	border-top: 1px solid @color_3;
+}
+@media screen and (min-width: 480px) and (max-width: 940px) {
+	main {
+		flex-basis: 100%;
+	}
+	header {
+		height: 100px;
+		h1 {
+			margin-bottom: 11px;
+			font-size: 4rem;
+		}
+	}
+	section {
+		display: none;
+	}
+	.content{
+		width:100%;
+		border: none;
+		.borderedtb;
+	}
+	.vNav{
+		display: none;
+	}
+	#icon{
+		height: 80px;
+		width: 80px;
+	}
+	.someButton{
+		display: block;
+	}
+	#nav1{
+		display: none;
+	}
+	#nav2.hider{
+		display: block;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	main {
+		flex-basis: 100%;
+	}
+	header {
+		height: 80px;
+		h1 {
+			font-size: 3rem;
+		}
+	}
+	nav {
+		display: none;
+	}
+	section {
+		display: none;
+	}
+	.vNav{
+		display: none;
+	}
+	.content{
+		width:100%;
+	}
+	#icon{
+		height: 50px;
+		width: 50px;
+	}
+	.someButton{
+		display: block;
+	}
+	#nav2.hider{
+		display: block;
+	}
+}
+

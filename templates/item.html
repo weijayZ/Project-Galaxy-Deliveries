@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="sideways">
+		<div class="vNav">
+			<ul>
+					{% for item in menu %}
+					<li><a href='{{item[1]}}'>{{item[0]}}</a></li>
+					{% endfor %}
+			</ul>
+
+		</div>
+
+		<div class="content">
+			<h2>{{name}}</h2>
+			<div class="food">
+                <img src="{{img}}" alt="{{name}}" class="foodpic2">
+            </div>
+            <div class="fInfo">
+                <table>
+                    <tr>
+                        <th>Information</th>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>{{price}} Credits</td>
+                    </tr>
+                    <tr>
+                        <td>Calories:</td>
+                        <td>{{cal}}</td>
+                    </tr>
+                    <tr>
+                        <td>Type:</td>
+                        <td>{{type}}</td>
+                    </tr>
+                    <tr>
+                        <td>Category:</td>
+                        <td>{{category}}</td>
+                    </tr>
+                    <tr>
+                        <td>Details:</td>
+                        <td><a href="https://www.google.ca/search?q={{name}}">{{name}}</a></a></td>
+                    </tr>
+                </table>
+                {% autoescape false %}
+                {{input}}
+                {% endautoescape %}
+			</div>
+		</div>
+</div>

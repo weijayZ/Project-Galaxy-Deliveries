@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="content">
+        <h2>Account</h2>
+        <img src="{{img}}" alt="profile picture" class="portrait">
+        <table id="prof">
+            <tr>
+                <td>Account Number: </td>
+                <td>{{aNum}}</td>
+            </tr>
+            <tr>
+                <td>Federation ID: </td>
+                <td>{{fid}}</td>
+            </tr>
+            <tr>
+                <td>First Name: </td>
+                <td>{{name}}</td>
+            </tr>
+            <tr>
+                <td>Last Name: </td>
+                <td>{{lname}}</td>
+            </tr>
+            <tr>
+                <td>Username: </td>
+                <td>{{user}}</td>
+            </tr>
+        </table>
+        <h2>Previous Orders</h2>
+        <table class="cart">
+            <tr>
+                <th>Invoice #:</th>
+                <th>Date:</th>
+                <th>Account Number:</th>
+                <th>Price:</th>
+            </tr>
+            {% for b in bills %}
+            <tr>
+                {% for i in b %}
+                <td>{{i}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+

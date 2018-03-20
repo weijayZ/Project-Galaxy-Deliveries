@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="sideways">
+		<div class="vNav">
+			<ul>
+					{% for item in menu %}
+					<li><a href='{{item[1]}}'>{{item[0]}}</a></li>
+					{% endfor %}
+			</ul>
+
+		</div>
+
+		<div class="content" id="carter">
+			<h2>{{name}}</h2>
+                <table class="cart">
+                    <tr>
+                        <th>CID:</th>
+                        <th>PID:</th>
+                        <th>Date:</th>
+                        <th>Quantity:</th>
+                        <th>Price:</th>
+                        <th></th>
+                    </tr>
+                    {% for c in cart %}
+                    <tr>
+                        {% for i in c %}
+                        <td>{{i}}</td>
+                        {% endfor %}
+                        <td><button type="button" class="logB" onclick="removeItem(this)" value="{{c[5]}}">Remove</button></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <h3>Total: {{sum}}</h3>
+                <h2 id="empcar">{{emp}}</h2>
+            <button type="button" class="logA" onclick="empCart()">Clear Cart</button>
+            <button type="button" class="logA" onclick="order()">Order</button>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="sideways">
+		<div class="vNav">
+			<ul>
+					{% for item in menu %}
+					<li><a href='{{item[1]}}'>{{item[0]}}</a></li>
+					{% endfor %}
+			</ul>
+
+		</div>
+
+		<div class="content">
+            <h2>{{name}}</h2>
+            <img src="image/ordered.jpg" alt="spock thumbs up" class="portrait">
+			<strong>Your order has been sent, it will be a brief delay as we prepare your food and beam it to you.</strong>
+			</div>
+		</div>
+</div>
